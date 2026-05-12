@@ -49,14 +49,14 @@ if [[ "$ADMIN" == false ]]; then
     GET)
       ;; # always allowed
     POST|PUT|PATCH)
-      if [[ "$SCOPES" != *"write"* ]]; then
+      if ! has_scope "write" "$SCOPES"; then
         echo "ERROR: $METHOD_UPPER requests require CLERK_BAPI_SCOPES=\"write\" or --admin flag." >&2
         echo "Current CLERK_BAPI_SCOPES: \"$SCOPES\"" >&2
         exit 1
       fi
       ;;
     DELETE)
-      if [[ "$SCOPES" != *"write"* ]] || [[ "$SCOPES" != *"delete"* ]]; then
+      if ! has_scope "write" "$SCOPES" || ! has_scope "delete" "$SCOPES"; then
         echo "ERROR: DELETE requests require CLERK_BAPI_SCOPES=\"write,delete\" or --admin flag." >&2
         echo "Current CLERK_BAPI_SCOPES: \"$SCOPES\"" >&2
         exit 1
