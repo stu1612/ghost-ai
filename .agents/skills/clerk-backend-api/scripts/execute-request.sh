@@ -43,6 +43,18 @@ BODY="${3:-}"
 METHOD_UPPER=$(echo "$METHOD" | tr '[:lower:]' '[:upper:]')
 SCOPES="${CLERK_BAPI_SCOPES:-}"
 
+has_scope() {
+  local needle="$1"
+  local scopes_csv="$2"
+  local s
+  IFS=',' read -r -a _scopes <<< "$scopes_csv"
+  for s in "${_scopes[@]}"; do
+    s="${s//[[:space:]]/}"
+    [[ "$s" == "$needle" ]] && return 0
+  done
+  return 1
+}
+
 # Scope check
 if [[ "$ADMIN" == false ]]; then
   case "$METHOD_UPPER" in
