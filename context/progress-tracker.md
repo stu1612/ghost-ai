@@ -4,7 +4,7 @@ Update this file whenever the current phase, active feature, or implementation s
 
 ## Current Phase
 
-- Feature 01: Design System — complete.
+- Feature 02: Editor Chrome — complete.
 
 ## Current Goal
 
@@ -13,6 +13,7 @@ Update this file whenever the current phase, active feature, or implementation s
 ## Completed
 
 - 01-design-system: shadcn/ui configured (style: base-nova, Tailwind v4, cssVariables), all 7 UI primitives added (Button, Card, Dialog, Input, Tabs, Textarea, ScrollArea), lucide-react installed, lib/utils.ts cn() helper created, globals.css rewritten with dark-only theme (no light mode, no .dark class toggle).
+- 02-editor-chrome: EditorNavbar (fixed top bar, sidebar toggle with PanelLeftOpen/PanelLeftClose, left/center/right sections), ProjectSidebar (fixed overlay, slides in from left, Projects header + close button, My Projects/Shared tabs with empty states, New Project button). Dialog pattern available via existing components/ui/dialog.tsx exports.
 
 ## In Progress
 
@@ -20,7 +21,7 @@ Update this file whenever the current phase, active feature, or implementation s
 
 ## Next Up
 
-- 02: Next feature spec (TBD).
+- 03: Next feature spec (TBD).
 
 ## Open Questions
 
