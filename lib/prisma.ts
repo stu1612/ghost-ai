@@ -5,12 +5,18 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
 }
 
+function resolveSSLMode(url: string): string {
+  // pg-connection-string will change 'prefer'/'require'/'verify-ca' semantics in v3.
+  // Explicitly use 'verify-full' to preserve the current (stricter) behavior.
+  return url.replace(/sslmode=(prefer|require|verify-ca)\b/, 'sslmode=verify-full')
+}
+
 function createClient(): PrismaClient {
   const url = process.env.DATABASE_URL ?? ''
   if (url.startsWith('prisma+postgres://')) {
     return new PrismaClient({ accelerateUrl: url })
   }
-  const adapter = new PrismaPg({ connectionString: url })
+  const adapter = new PrismaPg({ connectionString: resolveSSLMode(url) })
   return new PrismaClient({ adapter })
 }
 

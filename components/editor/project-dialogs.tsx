@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import type { MockProject } from "@/hooks/use-project-dialogs";
+import type { Project } from "@/types/projects";
 
 interface CreateProjectDialogProps {
   open: boolean;
@@ -91,7 +91,7 @@ interface RenameProjectDialogProps {
   open: boolean;
   onClose: () => void;
   onSubmit: () => void;
-  project: MockProject | null;
+  project: Project | null;
   name: string;
   onNameChange: (name: string) => void;
 }
@@ -160,7 +160,7 @@ interface DeleteProjectDialogProps {
   open: boolean;
   onClose: () => void;
   onConfirm: () => void;
-  project: MockProject | null;
+  project: Project | null;
 }
 
 export function DeleteProjectDialog({

@@ -4,15 +4,15 @@ import { Pencil, Plus, Trash2, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { cn } from "@/lib/utils"
-import type { MockProject } from "@/hooks/use-project-dialogs"
+import type { Project } from "@/types/projects"
 
 interface ProjectSidebarProps {
   isOpen: boolean
   onClose: () => void
-  projects: MockProject[]
+  projects: Project[]
   onCreateProject: () => void
-  onRenameProject: (project: MockProject) => void
-  onDeleteProject: (project: MockProject) => void
+  onRenameProject: (project: Project) => void
+  onDeleteProject: (project: Project) => void
 }
 
 export function ProjectSidebar({
